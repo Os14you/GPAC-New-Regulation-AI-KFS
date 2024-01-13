@@ -89,7 +89,7 @@ void GPA_Calculator_System(){
         Grades grades;
         int choice = menu();
         switch (choice){
-            case 1: grades.getGrades(); CalculateGPA_semester(grades); break;
+            case 1: grades.getGrades(); showGPA(CalculateGPA_semester(grades)); break;
             case 4: return;
         }
     }
