@@ -15,8 +15,8 @@ int getIndex(string input){
     return index;
 }
 struct Grades {
-    int numGrades[8];
-    int numCreditHours[8];
+    int numGrades[8]={0};
+    int numCreditHours[8]={0};
     int sumOfHours(){
         int sum=0;
         for(int i=0;i<8;i++){
@@ -27,20 +27,20 @@ struct Grades {
         return sum;
     }
     void getGrades(){
-        int numOfSubjects,index=-1;
+        int numOfSubjects;
         cout << "Enter the number of subjects (exclude non-credits subjects) : ";
         cin>>numOfSubjects;
         for(int i=0;i<numOfSubjects;i++){
+            int index=-1;
             string inputGrade;
             cout << "Enter the number of credits for subject "<< (i+1) << " : ";
             cin >> numCreditHours[i];
             cout << "Enter your grade in this subject : ";
-            cin >> inputGrade;
-            index = getIndex(inputGrade);
             while(index==-1){
-                cout<<"Enter a valid input : ";
                 cin>>inputGrade;
                 index = getIndex(inputGrade);
+                if(index==-1)
+                    cout<<"Enter a valid input : ";
             }
             numGrades[i]=GPA_NUMERIC[index];
         }
@@ -91,6 +91,7 @@ void GPA_Calculator_System(){
         switch (choice){
             case 1: grades.getGrades(); showGPA(CalculateGPA_semester(grades)); break;
             case 4: return;
+            default: return;
         }
     }
 }
