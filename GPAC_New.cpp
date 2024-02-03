@@ -15,7 +15,7 @@ int getIndex(string input){
     return index;
 }
 struct Grades {
-    int numGrades[8]={0};
+    double numGrades[8]={0};
     int numCreditHours[8]={0};
     int sumOfHours(){
         int sum=0;
